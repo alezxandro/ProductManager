@@ -16,7 +16,8 @@ public class ProductManagerMenu {
 
     private void addLoginOptions() {
         loginOptions.add("1.Login as user");
-        loginOptions.add("2.Exit");
+        loginOptions.add("2.Login as admin");
+        loginOptions.add("3.Exit");
     }
 
     public int loginMenuOption () {

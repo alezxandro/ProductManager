@@ -24,7 +24,7 @@ public class AdminMenu {
         adminOptions.add("4.Delete products");
     }
 
-    public int userMenuOption (Admin admin) {
+    public int adminMenuOption (Admin admin) {
         System.out.println("Menu - " +  admin.getUsername() + "\n");
         for (var option : adminOptions) {
             System.out.println(option);

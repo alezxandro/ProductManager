@@ -3,6 +3,7 @@ package productmanager;
 import java.util.ArrayList;
 import java.util.List;
 
+import productmanager.model.menu.AdminMenu;
 import productmanager.model.menu.ProductManagerMenu;
 import productmanager.model.menu.UserMenu;
 import productmanager.model.product.Product;
@@ -32,10 +33,10 @@ public class ProductManager {
         do {
              option = productManagerMenu.loginMenuOption();
             switch (option) {
-            case 1:
-                loginUser();
+            case 1: case 2:
+                login();
                 break;
-            case 2:
+            case 3:
                 System.out.println("Thanks for using the product manager");
         
             default:
@@ -65,7 +66,26 @@ public class ProductManager {
 
     }
 
-    public void loginUser() {
+    public void adminMenu(Admin admin) {
+        AdminMenu adminMenu = AdminMenu.getInstance();
+        int option;
+        do {
+            option = adminMenu.adminMenuOption(admin);
+            switch (option) {
+            case 1:
+                viewProducts();
+                break;
+            case 2:
+                System.out.println("Thanks for using the product manager");
+        
+            default:
+                break;
+        }
+        } while (option < 1 || option > adminMenu.adminOptionsSize());
+
+    }
+
+    public void login() {
         String username = productManagerMenu.inputUsername();
         String password;
         
@@ -84,7 +104,12 @@ public class ProductManager {
             do {
                 password = productManagerMenu.inputPassword();
                 if (currentUser.checkPassword(password)) {
-                    userMenu(currentUser);
+                    if (currentUser instanceof Admin) {
+                        adminMenu((Admin) currentUser);
+                    }
+                    else {
+                        userMenu(currentUser);
+                    }
                     break;
                 }
                 attempts--;
