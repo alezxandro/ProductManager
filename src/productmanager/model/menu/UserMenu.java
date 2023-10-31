@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import productmanager.model.user.User;
+
 public class UserMenu{
     private static Scanner scanner = new Scanner(System.in);
 
@@ -12,6 +14,7 @@ public class UserMenu{
 
     private UserMenu () {
         userOptions = new ArrayList<>();
+        addUserOptions();
     }
 
     public void addUserOptions () {
@@ -19,8 +22,8 @@ public class UserMenu{
         userOptions.add("2.Exit");
     }
 
-    public int userMenuOption () {
-        System.out.println("User menu" + "\n");
+    public int userMenuOption (User user) {
+        System.out.println("Menu - " +  user.getUsername() + "\n");
         for (var option : userOptions) {
             System.out.println(option);
         }

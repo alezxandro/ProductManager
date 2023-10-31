@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import productmanager.model.menu.ProductManagerMenu;
+import productmanager.model.menu.UserMenu;
+import productmanager.model.product.Product;
 import productmanager.model.user.Admin;
 import productmanager.model.user.User;
 
 public class ProductManager {
 
     private List<User> users;
+    private List<Product> products;
     private ProductManagerMenu productManagerMenu;
 
     public ProductManager() {
@@ -42,12 +45,12 @@ public class ProductManager {
 
     public void loginUser() {
         String username = productManagerMenu.inputUsername();
-        String password = productManagerMenu.inputPassword();
-
+        String password;
+        
         User currentUser = null;
 
         for (User user : users) {
-            if (user.getUsername().equals(username) && !(user instanceof Admin) && user.checkPassword(password)) {
+            if (user.getUsername().equals(username) && !(user instanceof Admin)) {
                 currentUser =  user;
                 break;
             }
@@ -55,9 +58,20 @@ public class ProductManager {
 
         if (currentUser != null) {
             System.out.println("Found");
+            int attempts = 3; 
+            do {
+                password = productManagerMenu.inputPassword();
+                if (currentUser.checkPassword(password)) {
+                    UserMenu userMenu = UserMenu.getInstance();
+                    userMenu.userMenuOption(currentUser);
+                    break;
+                }
+                attempts--;
+            } while (attempts >= 0);
+            return;
         }
         else {
-            System.out.println("Users not found or incorrect password");
+            System.out.println("User not found");
         }
     }
 
