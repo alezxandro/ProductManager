@@ -10,10 +10,12 @@ public class ProductManagerMenu {
     private static Scanner scanner = new Scanner(System.in);
     private static ProductManagerMenu instance = null;
     private static List<String> loginOptions;
+    private static List<String> editOptions;
 
     private ProductManagerMenu() {
         loginOptions = new ArrayList<>();
         addLoginOptions();
+        addEditProductOptions();
     }
 
     private void addLoginOptions() {
@@ -88,9 +90,49 @@ public class ProductManagerMenu {
     }
 
     public String inputProductName() {
-        System.out.print("Insert the name of the product: ");
-        String name = scanner.nextLine();
+        String name;
+        do {
+            System.out.print("Insert the name of the product: ");
+            name = scanner.nextLine();
+        } while (name.isBlank());
         return name;
     }
+    public double inputProductPrice() {
+        double price;
+        do {
+            System.out.print("Insert the price of the product: ");
+             price = scanner.nextDouble();
+        } while (price < 0.0);
+        return price;
+    }
+    public int inputProductQuantity() {
+        int quantity;
+        do {
+            System.out.print("Insert the quantity of the product: ");
+            quantity = scanner.nextInt();
+        } while (quantity < 0);
+        return quantity;
+    }
+
+    public void addEditProductOptions () {
+        editOptions.add("1.Edit name");
+        editOptions.add("2.Edit price");
+        editOptions.add("3.Edit quantity");
+    }
+
+    public int inputEditOption () {
+        int option;
+        System.out.println("Edit product menu");
+        for (String e : editOptions) {
+            System.out.println(e);
+        }
+        do {
+            System.out.print("Input option: ");
+            option = scanner.nextInt();
+        } while(option < 1 || option > editOptions.size());
+
+        return option;
+
+    }    
 
 }

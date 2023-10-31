@@ -135,7 +135,10 @@ public class ProductManager {
 
     private void addProduct (Admin admin) {
         Product product = productManagerMenu.inputProduct();
-        products.add(product);
+        if (product != null) {
+            products.add(product);
+            System.out.println("product added successfully");
+        }
     } 
 
     private void removeProduct(Admin admin) {
@@ -145,6 +148,36 @@ public class ProductManager {
         }
         else {
             System.out.println("Product not found");
+        }
+    }
+
+    private void editProduct (User user) {
+        String name = productManagerMenu.inputProductName();
+        Product product = null;
+
+        for (Product p : products) {
+            if (p.getName().equals(name)) {
+                product = p;
+                break;
+            }
+            
+        }
+
+        if (product != null) {
+            int option = productManagerMenu.inputEditOption();
+
+            switch (option) {
+                case 1:
+                    product.setName(productManagerMenu.inputProductName());
+                    break;
+                case 2:
+                    product.setPrice(productManagerMenu.inputProductPrice());
+                    break;
+                case 3: 
+                    product.setQuantity(productManagerMenu.inputProductQuantity());
+                default:
+                    break;
+            }
         }
     }
 
