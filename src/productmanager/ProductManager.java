@@ -97,6 +97,11 @@ public class ProductManager {
     }
 
     public void viewProducts () {
+        if (products.size() == 0) {
+            System.out.println("No products available");
+            return;
+        }
+        System.out.println("List of products: " + "\n");
         for (Product product : products) {
             System.out.println(product);
         }
