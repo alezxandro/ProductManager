@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import productmanager.model.product.Product;
+
 public class ProductManagerMenu {
     private static Scanner scanner = new Scanner(System.in);
     private static ProductManagerMenu instance = null;
@@ -58,6 +60,31 @@ public class ProductManagerMenu {
 
     public int loginMenuOptionSize () {
         return loginOptions.size();
+    }
+
+    public Product inputProduct () {
+
+        String name;
+        double price;
+        int quantity;
+
+        do {
+            System.out.print("Insert name of the product: ");
+            name = scanner.nextLine();
+        } while (name.isBlank());
+
+        do {
+            System.out.print("Insert the price of the product: ");
+            price = scanner.nextDouble();
+        } while (price < 0 );
+
+        do {
+            System.out.print("Insert the quantity of the product: ");
+            quantity = scanner.nextInt();
+        } while (quantity < 0);
+
+        return new Product(name, price, quantity);
+
     }
 
 }

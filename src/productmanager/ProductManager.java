@@ -130,8 +130,12 @@ public class ProductManager {
         for (Product product : products) {
             System.out.println(product);
         }
+        
     }
 
-     
+    private void addProduct (Admin admin) {
+        Product product = productManagerMenu.inputProduct();
+        products.add(product);
+    } 
 
 }
