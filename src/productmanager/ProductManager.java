@@ -138,4 +138,14 @@ public class ProductManager {
         products.add(product);
     } 
 
+    private void removeProduct(Admin admin) {
+        String name = productManagerMenu.inputProductName();
+        if (products.removeIf(e -> e.getName().equals(name))) {
+            System.out.println("Product removed successfully");
+        }
+        else {
+            System.out.println("Product not found");
+        }
+    }
+
 }

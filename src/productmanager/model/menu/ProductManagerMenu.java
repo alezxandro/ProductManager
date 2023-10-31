@@ -87,4 +87,10 @@ public class ProductManagerMenu {
 
     }
 
+    public String inputProductName() {
+        System.out.print("Insert the name of the product: ");
+        String name = scanner.nextLine();
+        return name;
+    }
+
 }
