@@ -52,7 +52,7 @@ public class ProductManager {
             option = userMenu.userMenuOption(user);
             switch (option) {
             case 1:
-                loginUser();
+                viewProducts();
                 break;
             case 2:
                 System.out.println("Thanks for using the product manager");
@@ -93,6 +93,12 @@ public class ProductManager {
         }
         else {
             System.out.println("User not found");
+        }
+    }
+
+    public void viewProducts () {
+        for (Product product : products) {
+            System.out.println(product);
         }
     }
 
