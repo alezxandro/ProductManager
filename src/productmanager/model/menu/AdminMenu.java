@@ -13,7 +13,7 @@ public class AdminMenu {
     private static AdminMenu instance = null;
 
     private AdminMenu() {
-        this.adminOptions = new ArrayList<>();
+        adminOptions = new ArrayList<>();
         addAdminOptions();
     }
 
