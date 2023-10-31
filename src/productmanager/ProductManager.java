@@ -45,7 +45,7 @@ public class ProductManager {
         } while (option < 1 || option > productManagerMenu.loginMenuOptionSize());
     }
 
-    public void userMenu(User user) {
+    private void userMenu(User user) {
         UserMenu userMenu = UserMenu.getInstance();
 
         int option;
@@ -66,7 +66,7 @@ public class ProductManager {
 
     }
 
-    public void adminMenu(Admin admin) {
+    private void adminMenu(Admin admin) {
         AdminMenu adminMenu = AdminMenu.getInstance();
         int option;
         do {
@@ -121,7 +121,7 @@ public class ProductManager {
         }
     }
 
-    public void viewProducts () {
+    private void viewProducts () {
         if (products.size() == 0) {
             System.out.println("No products available");
             return;
@@ -131,5 +131,7 @@ public class ProductManager {
             System.out.println(product);
         }
     }
+
+     
 
 }
