@@ -43,4 +43,8 @@ public class UserMenu{
         }
         return instance;
     }
+
+    public int userMenuOptionSize() {
+        return userOptions.size();
+    }
 }

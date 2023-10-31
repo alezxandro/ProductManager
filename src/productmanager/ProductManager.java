@@ -17,6 +17,7 @@ public class ProductManager {
 
     public ProductManager() {
         users = new ArrayList<>();
+        products = new ArrayList<>();
         productManagerMenu = ProductManagerMenu.getInstance();
     }
 
@@ -27,10 +28,10 @@ public class ProductManager {
     }
 
     public void menu() {
-        int scelta;
+        int option;
         do {
-             scelta = productManagerMenu.loginMenuOption();
-            switch (scelta) {
+             option = productManagerMenu.loginMenuOption();
+            switch (option) {
             case 1:
                 loginUser();
                 break;
@@ -40,7 +41,28 @@ public class ProductManager {
             default:
                 break;
         }
-        } while (scelta < 1 || scelta > productManagerMenu.loginMenuOptionSize());
+        } while (option < 1 || option > productManagerMenu.loginMenuOptionSize());
+    }
+
+    public void userMenu(User user) {
+        UserMenu userMenu = UserMenu.getInstance();
+
+        int option;
+        do {
+            option = userMenu.userMenuOption(user);
+            switch (option) {
+            case 1:
+                loginUser();
+                break;
+            case 2:
+                System.out.println("Thanks for using the product manager");
+        
+            default:
+                break;
+        }
+        } while (option < 1 || option > userMenu.userMenuOptionSize());
+
+
     }
 
     public void loginUser() {
@@ -62,8 +84,7 @@ public class ProductManager {
             do {
                 password = productManagerMenu.inputPassword();
                 if (currentUser.checkPassword(password)) {
-                    UserMenu userMenu = UserMenu.getInstance();
-                    userMenu.userMenuOption(currentUser);
+                    userMenu(currentUser);
                     break;
                 }
                 attempts--;
