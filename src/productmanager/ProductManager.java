@@ -63,7 +63,7 @@ public class ProductManager {
                 editProduct(user);
                 break;
             default:
-            System.out.println("Log out");
+            System.out.println("Log out" + "\n");
                 break;
         }
         } while (option >= 1 && option < userMenu.userMenuOptionSize());

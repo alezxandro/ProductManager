@@ -7,8 +7,7 @@ import java.util.Scanner;
 import productmanager.model.user.User;
 import productmanager.model.user.Admin;
 
-public class AdminMenu {
-    private static Scanner scanner = new Scanner(System.in);
+public class AdminMenu extends Menu{
     private static List<String> adminOptions;
     private static AdminMenu instance = null;
 

@@ -6,8 +6,7 @@ import java.util.Scanner;
 
 import productmanager.model.user.User;
 
-public class UserMenu{
-    private static Scanner scanner = new Scanner(System.in);
+public class UserMenu extends Menu{
 
     private static UserMenu instance = null;
     private static List<String> userOptions;
