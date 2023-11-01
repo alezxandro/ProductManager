@@ -181,4 +181,30 @@ public class ProductManager {
         }
     }
 
+    private void searchProduct (User user ) {
+
+        System.out.println("Search product" + "\n");
+
+        List<Product> foundProducts = new ArrayList<>();
+        String name = productManagerMenu.inputProductName();
+        for (Product product : products) {
+            if (product.getName().equals(name)) {
+                foundProducts.add(product);
+            }
+        }
+
+        if (foundProducts.size() == 0) {
+            System.out.println("\nno products found");
+            return;
+        }
+
+        System.out.println("\nList of products found: ");
+
+        for (Product product : foundProducts) {
+            System.out.println(product);
+        }
+
+        System.out.println();
+    }
+
 }
