@@ -24,7 +24,7 @@ public class ProductManager {
 
     public static void main(String[] args) {
        ProductManager productManager = new ProductManager();
-       productManager.users.add(new User("alezxandro", "1234"));
+       productManager.users.add(new Admin("alezxandro", "1234"));
        productManager.menu();
     }
 
@@ -38,11 +38,12 @@ public class ProductManager {
                 break;
             case 3:
                 System.out.println("Thanks for using the product manager");
+                break;
         
             default:
                 break;
         }
-        } while (option < 1 || option > productManagerMenu.loginMenuOptionSize());
+        } while (option >= 1 && option < productManagerMenu.loginMenuOptionSize());
     }
 
     private void userMenu(User user) {
@@ -55,13 +56,17 @@ public class ProductManager {
             case 1:
                 viewProducts();
                 break;
-            case 2:
-                System.out.println("Thanks for using the product manager");
-        
+            case 2: 
+                searchProduct(user);
+                break;
+            case 3:
+                editProduct(user);
+                break;
             default:
+            System.out.println("Log out");
                 break;
         }
-        } while (option < 1 || option > userMenu.userMenuOptionSize());
+        } while (option >= 1 && option < userMenu.userMenuOptionSize());
 
 
     }
@@ -76,12 +81,21 @@ public class ProductManager {
                 viewProducts();
                 break;
             case 2:
-                System.out.println("Thanks for using the product manager");
-        
+                searchProduct(admin);
+            case 3:
+                editProduct(admin);
+                break;
+            case 4:
+                addProduct(admin);
+                break;
+            case 5:
+                removeProduct(admin);
+                break;
             default:
+                System.out.println("Log out");
                 break;
         }
-        } while (option < 1 || option > adminMenu.adminOptionsSize());
+        } while (option >= 1 && option < adminMenu.adminOptionsSize());
 
     }
 
@@ -92,7 +106,7 @@ public class ProductManager {
         User currentUser = null;
 
         for (User user : users) {
-            if (user.getUsername().equals(username) && !(user instanceof Admin)) {
+            if (user.getUsername().equals(username)) {
                 currentUser =  user;
                 break;
             }

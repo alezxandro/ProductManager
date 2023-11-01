@@ -19,7 +19,9 @@ public class UserMenu{
 
     public void addUserOptions () {
         userOptions.add("1.View products");
-        userOptions.add("2.Exit");
+        userOptions.add("2.Search products");
+        userOptions.add("3.Update product");
+        userOptions.add("4.Exit");
     }
 
     public int userMenuOption (User user) {
@@ -32,6 +34,7 @@ public class UserMenu{
         do {
             System.out.print("Input option : ");
             option = scanner.nextInt();
+            System.out.println();
 
         } while (option < 1 ||option > userOptions.size());        
         return option;

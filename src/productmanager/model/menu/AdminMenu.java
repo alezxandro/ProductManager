@@ -19,9 +19,11 @@ public class AdminMenu {
 
     public void addAdminOptions () {
         adminOptions.add("1.View products");
-        adminOptions.add("2.Update products");
-        adminOptions.add("3.Create product");
-        adminOptions.add("4.Delete products");
+        adminOptions.add("2.Search products");
+        adminOptions.add("3.Update products");
+        adminOptions.add("4.Create product");
+        adminOptions.add("5.Delete products");
+        adminOptions.add("6.Exit");
     }
 
     public int adminMenuOption (Admin admin) {
@@ -34,6 +36,7 @@ public class AdminMenu {
         do {
             System.out.print("Input option : ");
             option = scanner.nextInt();
+            System.out.println();
 
         } while (option < 1 ||option > adminOptions.size());        
         return option;

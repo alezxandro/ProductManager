@@ -14,6 +14,7 @@ public class ProductManagerMenu {
 
     private ProductManagerMenu() {
         loginOptions = new ArrayList<>();
+        editOptions = new ArrayList<>();
         addLoginOptions();
         addEditProductOptions();
     }
@@ -34,6 +35,7 @@ public class ProductManagerMenu {
         do {
             System.out.print("Input option : ");
             scelta = scanner.nextInt();
+            System.out.println();
 
         } while (scelta < 1 ||scelta > loginOptions.size());        
         return scelta;
@@ -69,7 +71,7 @@ public class ProductManagerMenu {
         String name = inputProductName();
         double price = inputProductPrice();
         int quantity = inputProductQuantity();
-        
+
         return new Product(name, price, quantity);
 
     }
