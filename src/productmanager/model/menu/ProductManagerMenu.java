@@ -66,25 +66,10 @@ public class ProductManagerMenu {
 
     public Product inputProduct () {
 
-        String name;
-        double price;
-        int quantity;
-
-        do {
-            System.out.print("Insert name of the product: ");
-            name = scanner.nextLine();
-        } while (name.isBlank());
-
-        do {
-            System.out.print("Insert the price of the product: ");
-            price = scanner.nextDouble();
-        } while (price < 0 );
-
-        do {
-            System.out.print("Insert the quantity of the product: ");
-            quantity = scanner.nextInt();
-        } while (quantity < 0);
-
+        String name = inputProductName();
+        double price = inputProductPrice();
+        int quantity = inputProductQuantity();
+        
         return new Product(name, price, quantity);
 
     }
