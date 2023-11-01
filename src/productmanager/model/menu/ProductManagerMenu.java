@@ -10,17 +10,19 @@ public class ProductManagerMenu extends Menu{
     private static ProductManagerMenu instance = null;
     private static List<String> loginOptions;
     private static List<String> editOptions;
+    private static List<String> registerOptions;
 
     private ProductManagerMenu() {
         loginOptions = new ArrayList<>();
         editOptions = new ArrayList<>();
         addLoginOptions();
         addEditProductOptions();
+        addRegisterOptions();
     }
 
     private void addLoginOptions() {
-        loginOptions.add("1.Login as user");
-        loginOptions.add("2.Login as admin");
+        loginOptions.add("1.Login");
+        loginOptions.add("2.Register");
         loginOptions.add("3.Exit");
     }
 
@@ -120,5 +122,23 @@ public class ProductManagerMenu extends Menu{
         return option;
 
     }    
+
+    public void addRegisterOptions() {
+        registerOptions.add("1.Register admin");
+        registerOptions.add("2.Register user");
+    }
+
+    public int inputRegisterOption () {
+        int option;
+        System.out.println("Register menu");
+        for (String r : registerOptions) {
+            System.out.println(r);
+        }
+        do {
+            System.out.print("Input option: ");
+            option = scanner.nextInt();
+        } while (option < 1 || option > registerOptions.size());
+        return option;
+    }
 
 }

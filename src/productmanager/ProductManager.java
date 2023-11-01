@@ -33,8 +33,11 @@ public class ProductManager {
         do {
              option = productManagerMenu.loginMenuOption();
             switch (option) {
-            case 1: case 2:
+            case 1: 
                 login();
+                break;
+            case 2:
+                register(); 
                 break;
             case 3:
                 System.out.println("Thanks for using the product manager");
@@ -99,7 +102,7 @@ public class ProductManager {
 
     }
 
-    public void login() {
+    private void login() {
         String username = productManagerMenu.inputUsername();
         String password;
         
@@ -219,6 +222,33 @@ public class ProductManager {
         }
 
         System.out.println();
+    }
+
+    private void register () {
+
+        int option = productManagerMenu.inputRegisterOption();
+
+        String username = productManagerMenu.inputUsername();
+        String password = productManagerMenu.inputPassword();
+
+        User user = null;
+
+        switch (option) {
+            case 1:
+                user = new Admin(username, password);
+                break;
+            case 2:
+                user = new User(username, password);
+                break;
+            default:
+                break;
+        }
+
+        if (users.add(user)) {
+            System.out.println("User added successfully");
+        }
+
+
     }
 
 }
